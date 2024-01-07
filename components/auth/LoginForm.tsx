@@ -16,6 +16,7 @@ import {
 import { LoginSchema } from '@/schemas';
 import { Button } from '../ui/button';
 import { FormError } from '../FormError';
+import { FormSuccess } from '../FormSuccess';
 
 export const LoginForm = () => {
   const form = useForm<z.infer<typeof LoginSchema>>({
@@ -27,8 +28,8 @@ export const LoginForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    console.log(values)
-  }
+    console.log(values);
+  };
 
   return (
     <CardWrapper
@@ -47,13 +48,13 @@ export const LoginForm = () => {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input 
+                    <Input
                       {...field}
-                      placeholder='john.doe@example.com'
-                      type='email' 
+                      placeholder="john.doe@example.com"
+                      type="email"
                     />
                   </FormControl>
-                  <FormMessage/>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -64,19 +65,16 @@ export const LoginForm = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input 
-                      {...field}
-                      placeholder='******'
-                      type='password' 
-                    />
+                    <Input {...field} placeholder="******" type="password" />
                   </FormControl>
-                  <FormMessage/>
+                  <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-          <FormError message='wrong'/>
-          <Button type='submit' className='w-full'>
+          <FormError message="" />
+          <FormSuccess message="" />
+          <Button type="submit" className="w-full">
             Login
           </Button>
         </form>
