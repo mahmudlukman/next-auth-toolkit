@@ -18,6 +18,7 @@ import { RegisterSchema } from '@/schemas';
 import { Button } from '../ui/button';
 import { FormError } from '../FormError';
 import { FormSuccess } from '../FormSuccess';
+import { register } from '@/actions/register';
 
 
 export const RegisterForm = () => {
@@ -35,15 +36,15 @@ export const RegisterForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
-    // setError('');
-    // setSuccess('');
+    setError('');
+    setSuccess('');
 
-    // startTransition(() => {
-    //   Register(values).then((data) => {
-    //     setError(data.error);
-    //     setSuccess(data.success);
-    //   });
-    // });
+    startTransition(() => {
+      register(values).then((data) => {
+        setError(data.error);
+        setSuccess(data.success);
+      });
+    });
   };
 
   return (
